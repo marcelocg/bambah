@@ -1,0 +1,2 @@
+class OrcamentosController < ApplicationController
+end

@@ -1,0 +1,2 @@
+module NaturezasHelper
+end

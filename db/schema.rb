@@ -11,7 +11,50 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601185227) do
+ActiveRecord::Schema.define(:version => 20130601193941) do
+
+  create_table "contas", :force => true do |t|
+    t.string   "nome"
+    t.string   "descricao"
+    t.boolean  "cartao"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "lancamentos", :force => true do |t|
+    t.integer  "mes"
+    t.integer  "ano"
+    t.string   "descricao"
+    t.decimal  "valor"
+    t.boolean  "realizado"
+    t.integer  "natureza_id"
+    t.integer  "conta_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "lancamentos", ["conta_id"], :name => "index_lancamentos_on_conta_id"
+  add_index "lancamentos", ["natureza_id"], :name => "index_lancamentos_on_natureza_id"
+
+  create_table "naturezas", :force => true do |t|
+    t.string   "nome"
+    t.string   "descricao"
+    t.boolean  "receita"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "orcamentos", :force => true do |t|
+    t.integer  "mes"
+    t.integer  "ano"
+    t.string   "observacao"
+    t.decimal  "valor"
+    t.integer  "natureza_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "orcamentos", ["natureza_id"], :name => "index_orcamentos_on_natureza_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

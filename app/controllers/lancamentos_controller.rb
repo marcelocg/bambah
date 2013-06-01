@@ -1,0 +1,2 @@
+class LancamentosController < ApplicationController
+end
