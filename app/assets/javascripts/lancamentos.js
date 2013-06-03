@@ -10,4 +10,9 @@ $(function() {
             }
           }
   });
+  
+  $( "#spinMes" ).on( "spinstop", function( event, ui ) {
+    $( "#filtroLancamentos" ).submit();
+  });
+
 });
