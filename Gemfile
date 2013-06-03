@@ -18,6 +18,7 @@ group :development do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem "thin", ">= 1.5.0", :group => [:development, :test]
 gem "unicorn", ">= 4.3.1", :group => :production
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
