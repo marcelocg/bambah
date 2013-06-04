@@ -15,7 +15,10 @@ $(function() {
     $('#filtroLancamentos').submit();
   });
 
+  $( "#spanCarregando" ).hide();
+
   $('#filtroLancamentos').submit(loadLancamentos);
+
   var buscarLancamentos = null;
 
   function loadLancamentos(event) {
@@ -32,14 +35,15 @@ $(function() {
       cache: false,
       timeout: 10000, //dez segundos
       beforeSend: function(result) { 
-        $("#loadingDiv").modal('toggle');
+        $( "#spanCarregando" ).show();
         $('#flash').hide();
       },
       complete: function(result) { 
-        $("#loadingDiv").modal('toggle');
+        $( "#spanCarregando" ).hide();
         buscarLancamentos = null;
       },
       error: function(result) {
+        $( "#spanCarregando" ).hide();
         if (result.statusText != "abort") {
           $('#flash').show();
         }
