@@ -1,4 +1,35 @@
 $(function() {
+
+  var cache = {};
+  $( "#inputNatureza" ).autocomplete({
+    minLength: 1,
+    source: "naturezas.json",
+    select: function( event, ui ) {
+      $( "#inputNatureza" ).val( ui.item.nome );
+      $( '#inputNaturezaId').val( ui.item.id );      
+      return false;
+    }
+  })
+  .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+    return $( "<li>" )
+    .append( "<a>" + item.id + " - " + item.nome + "</a>" )
+    .appendTo( ul );
+  };
+
+  $( '#btnCriarLancamento' ).click( function() {
+    $( '#inputId' ).val('');
+    $( '#inputMes' ).val( $( '#spinMes' ).val());
+    $( '#editarLancamentoModal' ).modal('show');
+  });
+
+  $( '#editarLancamentoModal' ).on('shown', function () {
+    $( '#inputNatureza' ).focus();
+  });
+
+  $( '#spanCarregando' ).hide();
+
+  $('#filtroLancamentos').submit(loadLancamentos);
+
   $( "#spinMes" ).spinner({
     spin: function( event, ui ) {
             if ( ui.value > 12 ) {
@@ -10,14 +41,10 @@ $(function() {
             }
           }
   });
-  
+
   $( "#spinMes" ).on( "spinstop", function( event, ui ) {
     $('#filtroLancamentos').submit();
   });
-
-  $( "#spanCarregando" ).hide();
-
-  $('#filtroLancamentos').submit(loadLancamentos);
 
   var buscarLancamentos = null;
 
@@ -49,5 +76,6 @@ $(function() {
         }
       }
     });
+    
   }
 });

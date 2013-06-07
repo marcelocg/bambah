@@ -1,7 +1,7 @@
 <h3>Lançamentos</h3>
-<form id="filtroLancamentos">Ano: <%= @ano %>, Mês:<input id="spinMes" class="input-mini" name="mes" value=<%= @mes %>><span id="spanCarregando"><%= image_tag "loader.png" %> Carregando...</span></input></form>
+<form id="filtroLancamentos">Ano: <%= @ano %>, Mês:<input id="spinMes" class="input-mini" name="mes" value=<%= @mes %>><span id="spanCarregando"> <%= image_tag "loader.png" %> Carregando...</span></input></form>
 
-<a href="#editarLancamentoModal" role="button" class="btn" data-toggle="modal"><i class="icon-plus"></i> Criar Novo Lançamento...</a>
+<button id="btnCriarLancamento" class="btn"><i class="icon-plus"></i> Criar Novo Lançamento...</button>
 
 <div id="lancamentos">
   <%= render 'lancamentos' %>
@@ -13,13 +13,18 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Editar Lançamento</h3>
   </div>
-  <form>
+  <form id="formEditarLancamento">
     <div class="modal-body inputs">
       <fieldset>
-        <label>Natureza</label>
-        <input type="text" placeholder="Escolha uma natureza">
+        <input id="inputId" type="hidden">
+        <div class="ui-widget">
+          <label>Natureza</label>
+          <input id="inputNatureza" type="text" placeholder="Escolha uma natureza">
+        </div>
         <label>Valor</label>
-        <input type="text" placeholder="Valor do lançamento">
+        <input id="inputValor" type="text" placeholder="Valor do lançamento">
+        <label>Mês:</label>
+        <input id="inputMes" class="input-mini" name="mes" value=<%= @mes %>>
       </fieldset>
     </div>
 

@@ -1,5 +1,5 @@
 class LancamentosController < ApplicationController
-  
+
   def index
     @mes = params[:mes] || Time.now.month
     @ano = params[:ano] || Time.now.year
