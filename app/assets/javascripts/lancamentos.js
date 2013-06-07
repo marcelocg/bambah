@@ -30,6 +30,8 @@ $(function() {
 
   $('#filtroLancamentos').submit(loadLancamentos);
 
+  $( "#spinAno" ).spinner();
+
   $( "#spinMes" ).spinner({
     spin: function( event, ui ) {
             if ( ui.value > 12 ) {
@@ -43,6 +45,10 @@ $(function() {
   });
 
   $( "#spinMes" ).on( "spinstop", function( event, ui ) {
+    $('#filtroLancamentos').submit();
+  });
+
+  $( "#spinAno" ).on( "spinstop", function( event, ui ) {
     $('#filtroLancamentos').submit();
   });
 

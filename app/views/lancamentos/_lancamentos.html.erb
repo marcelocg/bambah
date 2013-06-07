@@ -3,6 +3,7 @@
     <tr>
       <th>Natureza</th>
       <th>Valor R$</th>
+      <th>Realizado?</th>
       <th></th>
     </tr>
   </thead>
@@ -11,7 +12,8 @@
     <tr>
       <td><%= lancto.natureza.nome %></td>
       <td><%= lancto.valor %></td>
-      <td><a class="btn" href="#"><i class="icon-pencil"></i></a></td>
+      <td><input type="checkbox" <%= lancto.realizado ? 'checked' : '' %>></td>
+      <td><a class="btn" href="#"><i class="icon-pencil"></i> Editar</a></td>
     </tr>
   <% end %>
   </tbody>

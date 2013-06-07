@@ -2,7 +2,7 @@ class NaturezasController < ApplicationController
 
   def index
 
-    @naturezas = params[:term] ? Natureza.where("nome like ?", "%#{params[:term]}%") : Natureza.all
+    @naturezas = params[:term] ? Natureza.where("nome like ?", "%#{params[:term]}%").order('id') : Natureza.all
 
     respond_to do |format|
       format.html # index.html.erb
